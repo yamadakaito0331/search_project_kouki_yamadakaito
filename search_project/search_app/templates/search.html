@@ -46,7 +46,7 @@
         {% for product in page_obj %} 
             <li class="product-item">
                 <a href="{% url 'product_detail' product.pk %}" class="product-link">
-                    <img src="{{ product.image.url }}"style="max-width: 300px;"><br>
+                    <img src="{{ product.image_url }}"style="max-width: 300px;"><br>
                     {{ product.title }} <br> {{ product.artist}}
                 </a>
             </li> 

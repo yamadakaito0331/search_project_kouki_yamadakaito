@@ -17,7 +17,7 @@
                     <span class="rank">{{ forloop.counter }}位</span>
                     <span class="product-nname">
                     <a href="{% url 'product_detail' product.pk %}">
-                        <img src="{{ product.image.url }}"style="max-width: 300px;"><br>
+                        <img src="{{ product.image_url }}"style="max-width: 300px;"><br>
                         {{ product.title }}
                         {{ product.artist }}
                     </a>

@@ -12,7 +12,7 @@ class SearchForm(forms.Form):
 class ProductForm(forms.ModelForm): 
     class Meta: 
         model = Product 
-        fields = ['title', 'artist', 'album','youtube','apple_music','category','image','release_date']
+        fields = ['title', 'artist', 'album','youtube','apple_music','category','image_url','release_date']
         labels = {
             'title': '曲名',
             'artist': 'アーティスト',  
@@ -20,7 +20,7 @@ class ProductForm(forms.ModelForm):
             'youtube' : 'YouTubeのURL',
             'apple_music' : 'Apple MusicのURL',
             'category':'ジャンル',
-            'image':'写真',
+            'image_url':'写真のURL',
             'release_date':'リリース日',
         }
         

@@ -17,7 +17,7 @@ class Product(models.Model):
     youtube = models.URLField(blank=True)
     apple_music = models.URLField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=10)
-    image = models.ImageField(default='default.png') 
+    image_url = models.URLField(default='https://thumb.ac-illust.com/73/7387030e5a5600726e5309496353969a_t.jpeg')
     release_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
