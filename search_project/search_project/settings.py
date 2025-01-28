@@ -3,12 +3,16 @@ import os
 import environ
 
 
-# .env ファイルを読み込む
-ALLOWED_HOSTS = environ.list('ALLOWED_HOSTS')
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -89,6 +93,7 @@ DATABASES = {
         'OPTIONS':{
             'options':'-c search_path=public'
         } 
+         
     } 
 }
 
@@ -139,17 +144,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    
 
 ADMIN_DELETE_PASSWORD = os.getenv('ADMIN_DELETE_PASSWORD', 'kaiyam0808') 
-env = environ.Env()
-env.read_env(os.path.join(BASE_DIR, '.env'))
-DEBUG = env('DEBUG')
-
-INSTALLED_APPS = [
-
-    'app.apps.AppConfig', # 追加
-]
-
-
-
-DATABASES = {
-    'default': env.db(),
-}
