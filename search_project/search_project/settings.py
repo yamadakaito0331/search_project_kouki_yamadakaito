@@ -11,17 +11,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
+
+DEBUG = env('True')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m1$h!x(!r5k=1c(#8#3=$r0kc44!@tfy%33156p(^di$f@a#)+'
-
+SECRET_KEY = env('django-insecure-m1$h!x(!r5k=1c(#8#3=$r0kc44!@tfy%33156p(^di$f@a#)+')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 
 
