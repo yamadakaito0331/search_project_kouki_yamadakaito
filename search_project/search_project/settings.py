@@ -18,7 +18,10 @@ DEBUG = env('DEBUG')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-
+print("SECRET_KEY:", env('SECRET_KEY'))
+print("DEBUG:", env.bool('DEBUG', default=False))
+print("DATABASE_URL:", env.db('DATABASE_URL'))
+print("ALLOWED_HOSTS:", env.list('ALLOWED_HOSTS'))
 
 # Application definition
 
@@ -75,18 +78,17 @@ WSGI_APPLICATION = 'search_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-        'default': { 
-        'ENGINE': 'django.db.backends.postgresql', 
-        'NAME': 'search_db', 
-        'USER': 'postgres', 
-        'PASSWORD': 'postgres', 
-        'HOST': 'localhost', 
+    'default': env.db('DATABASE_URL', default={
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'search_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432',
-        'OPTIONS':{
-            'options':'-c search_path=public'
-        } 
-         
-    } 
+        'OPTIONS': {
+            'options': '-c search_path=public'
+        }
+    })
 }
 
 
