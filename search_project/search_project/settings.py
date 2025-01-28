@@ -18,10 +18,6 @@ DEBUG = env('DEBUG')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-print("SECRET_KEY:", env('SECRET_KEY'))
-print("DEBUG:", env.bool('DEBUG', default=False))
-print("DATABASE_URL:", env.db('DATABASE_URL'))
-print("ALLOWED_HOSTS:", env.list('ALLOWED_HOSTS'))
 
 # Application definition
 
