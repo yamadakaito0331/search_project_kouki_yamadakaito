@@ -4,7 +4,7 @@ import environ
 
 
 # .env ファイルを読み込む
-
+ALLOWED_HOSTS = environ.list('ALLOWED_HOSTS')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +22,7 @@ DEBUG = True
 
 
 # 環境変数を取得
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
 
 # Application definition
 
@@ -147,7 +147,6 @@ INSTALLED_APPS = [
 
     'app.apps.AppConfig', # 追加
 ]
-
 
 
 
