@@ -1,6 +1,15 @@
 from pathlib import Path
 import os
 import environ
+
+# 環境変数を管理するオブジェクトを初期化
+env = environ.Env()
+environ.Env.read_env() 
+
+# .env ファイルを読み込む
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,8 +23,10 @@ SECRET_KEY = 'django-insecure-m1$h!x(!r5k=1c(#8#3=$r0kc44!@tfy%33156p(^di$f@a#)+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+
+# 環境変数を取得
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -134,7 +145,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ADMIN_DELETE_PASSWORD = os.getenv('ADMIN_DELETE_PASSWORD', 'kaiyam0808') 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
-SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 INSTALLED_APPS = [
