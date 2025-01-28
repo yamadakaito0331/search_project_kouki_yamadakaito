@@ -7,9 +7,10 @@ import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+env.read_env(os.path.join(BASE_DIR, '.env'))
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
@@ -73,17 +74,18 @@ WSGI_APPLICATION = 'search_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default={
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'search_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'default': { 
+        'ENGINE': 'django.db.backends.postgresql', 
+        'NAME': 'search_db', 
+        'USER': 'postgres', 
+        'PASSWORD': 'postgres', 
+        'HOST': 'localhost', 
         'PORT': '5432',
-        'OPTIONS': {
-            'options': '-c search_path=public'
-        }
-    })
+        'OPTIONS':{
+            'options':'-c search_path=public'
+        } 
+         
+    } 
 }
 
 
