@@ -872,3 +872,73 @@ body {
 .btn-primary:hover {
     background-color: #0056b3;
 }
+.comments-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.comment {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment p {
+    margin: 0;
+    padding: 0;
+}
+
+.comment-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd; /* 薄い枠線 */
+    border-radius: 8px; /* 角を丸く */
+    background-color: #f9f9f9; /* 背景色を柔らかく */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影をつけて立体感を追加 */
+}
+
+.comment-form form {
+    display: flex;
+    flex-direction: column; /* 縦方向に要素を並べる */
+}
+
+.comment-form textarea {
+    width: 100%; /* フォームを親要素に合わせる */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* テキストエリアの枠線 */
+    border-radius: 5px; /* 角を丸く */
+    font-size: 1em; /* フォントサイズを調整 */
+    box-sizing: border-box; /* パディングを含めてサイズを計算 */
+}
+
+.comment-form .btn-submit-comment:hover {
+    background-color: #0056b3; /* ホバー時の背景色 */
+}
+.comment-form .btn-submit-comment {
+    background-color: #007bff; /* ボタンの背景色 */
+    color: #fff; /* ボタンの文字色 */
+    padding: 10px 20px;
+    border: none; /* 枠線を消す */
+    border-radius: 5px; /* 角を丸く */
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* ホバーアニメーション */
+}
+.comment-form p {
+    font-size: 0.9em; /* 小さめのフォントサイズ */
+    color: #555; /* 灰色で控えめな文字色 */
+    text-align: center;
+}
+
+.comment-form p a {
+    color: #007bff; /* リンク色 */
+    text-decoration: none;
+}
+
+.comment-form p a:hover {
+    text-decoration: underline; /* ホバー時の下線 */
+}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% load static %}
- 
+
 <!DOCTYPE html> 
 <html lang="ja"> 
 <head> 
@@ -34,7 +34,8 @@
            <a href="{{ product.youtube }}"><img src="{% static 'unnamed.jpg' %}" class="social-icon"></a>
            <a href="{{ product.apple_music }}"><img src="{% static 'logo_512x256_apple-music.png' %}" class="social-icon"></a>
          </div>
-       </div>
+        </div>
+  
        
         {% if user.is_authenticated %}
           {% if is_favorited %}
@@ -56,6 +57,31 @@
         <a href="{% url 'product_update' product.pk %}" class="edit-btn">編集</a> 
         <a href="{% url 'search_view' %}" class="back-btn">最初の画面に戻る</a> 
       </div> 
+      <!-- コメントセクション -->
+      <div class="comments-section">
+        <h3>みんなのコメント</h3>
+        {% for comment in comments %}
+            <div class="comment">
+                <p><strong>{{ comment.user.username }}</strong> ({{ comment.created_at|date:"Y-m-d H:i" }})</p>
+                <p>{{ comment.content }}</p>
+            </div>
+        {% empty %}
+            <p>まだコメントがありません。</p>
+        {% endfor %}
+    </div>
+    <!-- コメントフォーム -->
+    <div class="comment-form">
+      {% if user.is_authenticated %}
+          <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn-submit-comment">コメントを投稿</button>
+          </form>
+      {% else %}
+          <p>コメントを投稿するには<a href="{% url 'login' %}">ログイン</a>してください。</p>
+      {% endif %}
+    </div>
+
   </div> 
  </div> 
 </div> 

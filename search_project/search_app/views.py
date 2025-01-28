@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Category 
-from .forms import SearchForm,ProductForm
+from .models import Product, Category,Comment
+from .forms import SearchForm,ProductForm,CommentForm
 from django.core.paginator import Paginator 
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank 
 from django.contrib.auth.decorators import login_required
@@ -26,6 +26,7 @@ def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
     product.view_count += 1
     product.save()
+    comments = product.comments.all()
 
     is_favorited = False
     if request.user.is_authenticated:
@@ -33,10 +34,23 @@ def product_detail(request, pk):
     
     related_products = Product.objects.filter(category=product.category).exclude(pk=pk)[:3]
 
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.product = product
+            comment.user = request.user
+            comment.save()
+            return redirect('product_detail', pk=product.pk)
+    else:
+        form = CommentForm()
+
     return render(request, 'product_detail.html', {
         'product': product,
         'is_favorited': is_favorited,
         'related_products': related_products,
+        'comments': comments,
+        'form': form
     })
 @login_required 
 def product_update(request, pk): 
