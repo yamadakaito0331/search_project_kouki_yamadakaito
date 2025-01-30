@@ -7,7 +7,7 @@ import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -123,9 +123,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# 静的ファイルのURL
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'linkimages'), ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
+
+# collectstatic で収集されるフォルダ（本番環境用）
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# 開発環境で追加の静的ファイルディレクトリを指定
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'linkimages')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
