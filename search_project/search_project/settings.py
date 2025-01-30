@@ -125,14 +125,11 @@ USE_TZ = True
 
 
 
-# 静的ファイルのURL
-STATIC_URL = '/static/'
-
-# collectstatic で収集されるフォルダ（本番環境用）
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# 開発環境で追加の静的ファイルディレクトリを指定
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'linkimages')]
+STATIC_URL = '/static/',
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'linkimages'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles'),
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
