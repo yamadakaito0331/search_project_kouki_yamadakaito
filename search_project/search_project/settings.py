@@ -7,7 +7,7 @@ import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -123,7 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 # 静的ファイルのURL
 STATIC_URL = '/static/'
