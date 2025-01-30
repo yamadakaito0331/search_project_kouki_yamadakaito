@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'linkimages'), ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'search_app/staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'search_app/static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
